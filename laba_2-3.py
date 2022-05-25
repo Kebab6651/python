@@ -32,7 +32,7 @@ try:
             if more_max_buffer_len:  # выходим из цикла если буффер переполнен
                 break
             if number_flag == True:
-                if len(work_buffer.strip()) > K:
+                if len(str(work_buffer.strip())) > K:
                     print(work_buffer.strip())  # ответ
 
             if not number_flag and not buffer and len(work_buffer) > 0:
