@@ -62,7 +62,7 @@ try:
     sum = 0
     for i in range(size):      # обрабатываем подматрицу B
         for j in range(0, size-i-1, 1):
-            if j%2 == 1 and j >= i and (B[i][j] == 1 or B[i][j] == 2 or B[i][j] == 3 or B[i][j] == 5 or B[i][j] == 7):
+            if j%2 == 1 and j >= i and (B[i][j] == 2 or B[i][j] == 3 or B[i][j] == 5 or B[i][j] == 7):
                 quantity += 1
             elif j%2 == 0 and j <= i:
                 sum += B[i][j]
