@@ -9,6 +9,16 @@
 import random
 import time
 
+
+def isitPrime(k):                               #функция для определения простое ли число
+    if k==2 or k==3: return True
+    if k%2==0 or k<2: return False
+    for i in range(3, int(k**0.5)+1, 2):
+        if k%i==0:
+            return False
+
+    return True
+
 def print_matrix(M,matr_name,tt):
         print ( "матрица " + matr_name + " промежуточное время = " + str(format(tt, '0.2f')) + " seconds.")
         for i in M:            # делаем перебор всех строк матрицы
@@ -60,10 +70,9 @@ try:
     
     quantity = 0
     sum = 0
-    simple_numbers = [2, 3, 5, 7]
     for i in range(size):      # обрабатываем подматрицу B
         for j in range(0, size-i-1, 1):
-            if j%2 == 1 and j >= i and (B[i][j] in simple_numbers):
+            if j%2 == 1 and j >= i and (isitPrime(B[i][j])):
                 quantity += 1
             elif j%2 == 0 and j <= i:
                 sum += B[i][j]
