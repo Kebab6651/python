@@ -3,20 +3,19 @@ import time
 
 print("Введите число K")
 K = int(input())
+print("Введите число, по которому нужно будет подсчитывать")
+N = int(input())
 more_max_buffer_len = False
 max_buffer_len = 100  # максимальный размер рабочего буфера
 buffer_len = 1  # размер буфера чтения
 work_buffer = ""  # рабочий буфер
 number_flag = False
-def affiliation(your_list, numbers):          #словарь, который хранит количество цифр каждого числа
-    numbers = {}
+def affiliation(your_list):          #словарь, который хранит количество цифр каждого числа
+    count = 0
     for i in your_list:
-        if i in numbers:
-            numbers[i] += 1
-        else:
-            numbers[i] = 1
-    return max(numbers.values())
-numbers = {}
+        if int(i) == N:
+            count += 1
+    return count
 your_list = []
 
 try:
@@ -42,8 +41,7 @@ try:
                 break
             if number_flag == True:
                 your_list = list(work_buffer.strip())
-                print(affiliation(your_list,numbers))
-                if affiliation(your_list,numbers) > K:
+                if affiliation(your_list) > K:
                     print(work_buffer.strip())  # ответ
 
             if not number_flag and not buffer and len(work_buffer) > 0:
