@@ -1,4 +1,3 @@
-#Написать программу, которая читая последовательность чисел из файла, выводит на экран числа, содержащие количество цифры, введенной с клавиатуры, большее К.
 import os
 import time
 
@@ -9,6 +8,16 @@ max_buffer_len = 100  # максимальный размер рабочего �
 buffer_len = 1  # размер буфера чтения
 work_buffer = ""  # рабочий буфер
 number_flag = False
+def affiliation(your_list, numbers):          #словарь, который хранит количество цифр каждого числа
+    numbers = {}
+    for i in your_list:
+        if i in numbers:
+            numbers[i] += 1
+        else:
+            numbers[i] = 1
+    return max(numbers.values())
+numbers = {}
+your_list = []
 
 try:
     print("\nxXx--Результат работы программы--xXx\nxXx--Локальное время", time.ctime(), "--xXx\n")
@@ -32,7 +41,9 @@ try:
             if more_max_buffer_len:  # выходим из цикла если буффер переполнен
                 break
             if number_flag == True:
-                if len(str(work_buffer.strip())) > K:
+                your_list = list(work_buffer.strip())
+                print(affiliation(your_list,numbers))
+                if affiliation(your_list,numbers) > K:
                     print(work_buffer.strip())  # ответ
 
             if not number_flag and not buffer and len(work_buffer) > 0:
